@@ -4,10 +4,6 @@ import numpy as np
 with open('input.txt', 'r') as file:
     input = file.read().splitlines()
 
-
-
-
-
 for i in range(len(input)):
     input[i] = input[i].replace("nine", "ni9ne")
     input[i] = input[i].replace( "eight", "ei8ght")
@@ -18,8 +14,6 @@ for i in range(len(input)):
     input[i] = input[i].replace("three", "th3ree")
     input[i] = input[i].replace( "two", "tw2o")
     input[i] = input[i].replace("one", "o1ne")
-    
-    
     input[i] = re.sub(r'[^\d]+', '', input[i])
     if(len(input[i])<2):
         input[i] = input[i] + input[i]
