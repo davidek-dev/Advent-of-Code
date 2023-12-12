@@ -25,6 +25,7 @@ for card in cards:
     chosen_numbers.append(numbers_right)
 
 sum = 0
+
 for index, card in enumerate(cards):
     count_winning_numbers = 0
     for win in winning_number_array[index]:

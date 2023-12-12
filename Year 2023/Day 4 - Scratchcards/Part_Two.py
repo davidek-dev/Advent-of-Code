@@ -24,18 +24,26 @@ for card in cards:
     winning_number_array.append(numbers_left)
     chosen_numbers.append(numbers_right)
 
-sum = 0
-for index, card in enumerate(cards):
+
+
+# Dictionary to store the count of scratchcards for each card
+scratchcard_count = {i: 1 for i in range(len(cards))}
+
+
+for index in range(len(cards)):
     count_winning_numbers = 0
     for win in winning_number_array[index]:
-        winning_number = False
-        for num in chosen_numbers[index]:
-            if num == win:
-                winning_number = True
-        if winning_number:
-            count_winning_numbers += 1        
-    if count_winning_numbers != 0:
-        sum += 2 ** (count_winning_numbers-1)
+        if any(num == win for num in chosen_numbers[index]):
+            count_winning_numbers += 1
 
+    # If no winning numbers, continue to the next card
+    if count_winning_numbers == 0:
+        continue
 
-print(sum)
+    # Otherwise, simulate winning additional scratchcards
+    for x in range(1, count_winning_numbers + 1):
+        scratchcard_count[index + x] += scratchcard_count[index]
+
+# Calculate the total number of scratchcards
+total_scratchcards = sum(scratchcard_count.values())
+print(total_scratchcards)
