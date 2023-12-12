@@ -27,7 +27,7 @@ for card in cards:
 
 
 # Dictionary to store the count of scratchcards for each card
-scratchcard_count = {i: 1 for i in range(len(cards))}
+scratchcard_count = {i: 1 for i in range(len(cards))} # initalize with each card being once in the staple
 
 
 for index in range(len(cards)):
@@ -42,7 +42,8 @@ for index in range(len(cards)):
 
     # Otherwise, simulate winning additional scratchcards
     for x in range(1, count_winning_numbers + 1):
-        scratchcard_count[index + x] += scratchcard_count[index]
+        scratchcard_count[index + x] += scratchcard_count[index] #if the current num card is a win, transfer the amount of the current card to the next card
+        # and iterate to the following + repeat, with the following
 
 # Calculate the total number of scratchcards
 total_scratchcards = sum(scratchcard_count.values())
